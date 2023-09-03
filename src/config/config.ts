@@ -1,39 +1,17 @@
-import { Pushover } from 'pushover-js'
-interface Config {
-    baseUrl: string;
-    movieId: number;
-    searchQuery: {
-        filters: string;
-        cinema_ids: number[];
-        dateOffset: Date;
-        range: number;
-    };
-    po: {
-        user: string;
-        token: string;
-        sound: string; //to play at a successful notification
-        priority: number;
-        expire: number;
-        retry: number;
-        url: string;
-        urlName: string;
-        attachPicture: boolean;
-        setHTML: boolean;
-    };
-}
-
 export let config: Config = {
     baseUrl: "https://www.vuecinemas.nl/performances.json",
-    movieId: 44681,
+    ticketBaseUrl: "https://www.vuecinemas.nl/kopen/{movie.slug}/{performance.id}",
+    notifyOnInvisiblePerformances: false, // if true, you will get a notification if the first performance has its visibility set to false
+    movieId: 43871, //4681
     searchQuery: {
-            filters: "",
-            cinema_ids: [13],
-            dateOffset: new Date(),
-            range: 365,
-        },
+        filters: "",
+        cinema_ids: [13],
+        dateOffset: new Date(),
+        range: 365,
+    },
     po: {
-        user: "ujhnqtwp658cy6ubvofvaqu6e85iqm",
-        token: "a21wfq5mdfs132ztqmdtox6d4tyk6y",
+        user: "",
+        token: "",
         sound: "cosmic",
         priority: 1,
         expire: 60,
@@ -44,3 +22,29 @@ export let config: Config = {
         urlName: "",
     },
 };
+
+
+interface Config {
+    baseUrl: string;
+    ticketBaseUrl: string;
+    notifyOnInvisiblePerformances: boolean;
+    movieId: number;
+    searchQuery: {
+        filters: string;
+        cinema_ids: number[];
+        dateOffset: Date;
+        range: number;
+    };
+    po: {
+        user: string;
+        token: string;
+        sound: string;
+        priority: number;
+        expire: number;
+        retry: number;
+        url: string;
+        urlName: string;
+        attachPicture: boolean;
+        setHTML: boolean;
+    };
+}
